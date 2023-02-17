@@ -1,7 +1,7 @@
 const net = new brain.NeuralNetwork();
     
 
-
+//Initial Data here is weak
 const data = [
     {
         input: { r: 0, g: 0, b: 0},
@@ -23,6 +23,29 @@ const printButton = document.getElementById('print-button');
 
 let color
 setRandomColor()
+
+whiteButton.addEventListener('click', () => {
+    chooseColor(1)
+})
+
+blackButton.addEventListener('click', () => {
+    chooseColor(0)
+})
+
+printButton.addEventListener('click', print)
+
+function chooseColor(value){
+    data.push({
+        input: color,
+        output:[value]
+    })
+    setRandomColor()
+}
+
+function print() {
+    console.log(JSON.stringify(data))
+}
+
 
 function setRandomColor() {
     color = {
