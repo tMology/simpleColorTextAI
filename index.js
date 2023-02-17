@@ -15,7 +15,27 @@ const data = [
 
 net.train(data);
 
-const diagram = document.getElementById('diagram');
-diagram.innerHTML = brain.utilities.toSVG(net);
+const colorEl = document.getElementById('color');
+const guessEl = document.getElementById('guess');
+const whiteButton = document.getElementById('white-button');
+const blackButton = document.getElementById('black-button');
+const printButton = document.getElementById('print-button');
 
-console.log(net.run({ r: 1, g: .5, b: 0 }))
+let color
+setRandomColor()
+
+function setRandomColor() {
+    color = {
+        r: Math.random(),
+        g: Math.random(),
+        b: Math.random()
+    }
+
+    const guess = net.run(color)[0]
+    
+    guessEl.style.color = guess > .5 ? '#FFF' : '#000'
+
+
+    colorEl.style.backgroundColor=
+    `rgb(${color.r * 255}, ${color.g * 255}, ${color.b * 255})`
+}
