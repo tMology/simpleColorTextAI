@@ -1,0 +1,1 @@
+Thank you for the valuable information Web Dev Simplified!
